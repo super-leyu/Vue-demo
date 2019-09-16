@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>字符串反序</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <input type="text" v-model="msg" />
+            <!-- 模板语法 -->
+            <div>模板语法：{{ msg.split("").reverse().join("") }}</div>
+            <!-- computed -->
+            <div>computed：{{ msgComputed }}</div>
+            <!-- method -->
+            <div>methods：{{ msgMethod() }}</div>
+            <!-- watch -->
+            <div>watch：{{ msgWatch }}</div>
+        </div>
+    </body>
+</html>
+<script>
+    const app = new Vue({
+        el: "#root",
+        data: {
+            msg: "123",
+            msgWatch: "",
+            // deep深度监听
+            // msgObj: {
+            //     a: {
+            //         b: {
+            //             c: 1
+            //         }
+            //     }
+            // }
+        },
+        created() {
+            this.msgWatch = this.reverse(this.msg);
+        },
+        methods: {
+            // 翻转
+            reverse: function(val) {
+                return val.split("").reverse().join("");
+            },
+            msgMethod: function() {
+                return this.reverse(this.msg);
+            }
+        },
+        computed: {
+            msgComputed: function() {
+                return this.reverse(this.msg);
+            }
+        },
+        watch: {
+            msg: function(newVal, oldVal) {
+                this.msgWatch = this.reverse(newVal);
+            }
+            // immediate立即调用
+            // msg: {
+            //     handler(newVal, oldVal) {
+            //         this.msgWatch = this.reverse(newVal);
+            //     },
+            //     immediate: true
+            // }
+        }
+    });
+</script>

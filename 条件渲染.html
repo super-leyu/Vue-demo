@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="root">
+        <!-- 这条只会在指令的表达式返回 true 的时候被 渲染。 -->
+        <div v-if="Math.random() > 0.5">
+            v-if：可以看见
+        </div>
+        <!-- 返回 false 时渲染 -->
+        <div v-else>
+            v-else：看不见
+        </div>
+
+        <!-- 这两条始终会被渲染并保留在 DOM 中，只是通过改变元素的 CSS 属性做显隐 -->
+        <!-- 返回 true 时显示（即css属性设置为 display：block） -->
+        <!-- 返回 false 时渲染（即css属性设置为 display：none） -->
+        <!-- <div v-show="Math.random() > 0.5">
+        v-show：可以看见
+        </div> -->
+	</div>
+
+	<script>
+		const vm = new Vue({
+			el: '#root',
+			data: {}
+		})
+	</script>
+</body>
+</html>

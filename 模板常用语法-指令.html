@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>模板常用语法</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div>{{msg}}</div>
+            <div v-html="msg"></div>
+
+            <button :disabled="isButtonDisabled">button</button>
+
+            <h2 :class="title">此处绑定class</h2>
+            <h2 :style="style">此处绑定style</h2>
+
+            <p v-if="seen">现在你看到我了</p>
+        </div>
+    </body>
+</html>
+<script>
+    const app = new Vue({
+        el: "#root",
+        data: {
+            msg: "<h1 style=color:red>现在是进行vue基础的学习<h1>",
+            isButtonDisabled: false,
+            title: 'title',
+            style: {
+                'color': 'blue'
+            },
+            seen: true
+        }
+    });
+</script>
+<style>
+.title {
+    color: orange;
+}
+</style>

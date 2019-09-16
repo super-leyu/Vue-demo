@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>{{msg}}</div>
+        <top class="top"></top>
+        <center class="center"></center>
+        <bottom class="bottom"></bottom>
+        <left class="left"></left>
+    </div>
+</body>
+</html>
+<script>
+    // 全局组件注册
+    Vue.component('top', {
+        data: function() {
+            return {
+                text: '全局top组件'
+            }
+        },
+        template: '<div>{{text}}</div>'
+    })
+
+    Vue.component('center', {
+        data: function() {
+            return {
+                text: '全局center组件'
+            }
+        },
+        template: '<div>{{text}}</div>'
+    })
+
+    Vue.component('bottom', {
+        data: function() {
+            return {
+                text: '全局bottom组件'
+            }
+        },
+        template: '<div>{{text}}</div>'
+    })
+
+    const app = new Vue({
+        el: '#root',
+        data: {
+            msg: 'test'
+        },
+        // 局部组件注册
+        components: {
+            left: {
+                data: function() {
+                    return {
+                        text: '局部left组件'
+                    }
+                },
+                template: '<div>{{text}}</div>'
+            }
+        }
+    })
+</script>
+
+<style>
+    .top {
+        width: 100%;
+        height: 50px;
+        background: cornflowerblue;
+        text-align: center;
+        line-height: 50px;
+    }
+    .center {
+        width: 100%;
+        height: 300px;
+        background: coral;
+        text-align: center;
+        line-height: 300px;
+    }
+    .bottom {
+        width: 100%;
+        height: 50px;
+        background: dimgrey;
+        text-align: center;
+        line-height: 50px;
+    }
+    .left {
+        width: 50%;
+        height: 100px;
+        background: forestgreen;
+        text-align: center;
+        line-height: 100px;
+    }
+</style>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="root">
+        <button @click="count +=1">数值：{{ count }}</button>
+        <button @click="handleClick">click</button>
+	</div>
+
+	<script>
+		const vm = new Vue({
+			el: '#root',
+			data: {
+                count: 0
+            },
+            methods: {
+                handleClick:function() {
+                    alert(this.count++)
+                }
+            }
+		})
+	</script>
+</body>
+</html>

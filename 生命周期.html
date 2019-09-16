@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>生命周期</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="root">
+		<div id="title">{{title}}</div>
+	</div>
+</body>
+</html>
+<script>
+    const vm = new Vue({
+        el: '#root',
+        data: {
+            title: '前端组基础培训（共4课）',
+        },
+        beforeCreate() {
+            console.log('beforeCreate', this.title);
+        },
+        created() {
+            console.log('created', this.title);
+            fetch('https://api.myjson.com/bins/1bvgsl')
+                .then(res => res.json())
+                .then(json => {
+                    this.title = json.lessons[1];
+                })
+        },
+        beforeMount(){
+            console.log('beforeMount');
+        },
+        mounted() {
+            const dom = document.getElementById('title');
+            dom.style.color = 'red';
+            console.log('mounted')
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate')
+        },
+        updated() {
+            console.log('updated');
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy');
+        },
+        destroyed() {
+            console.log('destroyed');
+        }
+    })
+</script>

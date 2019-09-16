@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>模板常用语法</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h2>{{ title }}</h2>
+            <div>这是第{{ count + 1 }}次分享</div>
+            <div>下次还有么？{{ count > 4 ? '没有': '有' }}</div>
+        </div>
+    </body>
+</html>
+<script>
+    const app = new Vue({
+        el: "#root",
+        data: {
+            title: '前端组基础培训（共4课）',
+            count: 1
+        }
+    });
+</script>

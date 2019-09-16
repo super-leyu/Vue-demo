@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="root">
+        <!-- key 相当于这个元素的唯一身份识别，不可重复 -->
+        <!-- vue会根据 key 在虚拟 DOM 算法中做节点复用，内部的一种优化机制 -->
+        <h2>{{ title }}</h2>
+		<div v-for="item in items" :key="item.id">
+            {{item.id}}-{{item.text}}
+            <span v-if="item.id === current">（正在进行）</span>
+		</div>
+	</div>
+
+	<script>
+		const vm = new Vue({
+			el: '#root',
+			data: {
+                title: '前端组基础培训（共4课）',
+                current: 2,
+			    items: [{
+			    	id: 1,
+			    	text: "HTML&CSS&JavaScript基础"
+			    },{
+			    	id: 2,
+			    	text: "Vue基础"
+			    },{
+			    	id: 3,
+			    	text: "Vue实战"
+			    },{
+			    	id: 4,
+			    	text: "构建与发布"
+			    }] 
+		  	}
+		})
+	</script>
+</body>
+</html>

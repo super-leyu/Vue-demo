@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>数据与方法</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <div>{{ title }}</div>
+        </div>
+    </body>
+</html>
+<script>
+    const vm = new Vue({
+        el: "#root",
+        // 数据属性
+        data: {
+            title: '前端组基础培训（共4课）',
+        }
+    });
+
+    // 实例属性
+    console.log(vm.$el, '$el')
+    console.log(vm.$data, '$data')
+
+    // 实例方法
+    vm.$watch('title', function(newVal, oldVal) {
+        console.log(newVal, oldVal, '$watch');
+    })
+</script>

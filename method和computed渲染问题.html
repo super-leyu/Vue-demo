@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>method和computed渲染问题</title>
+	<script src="vue.js"></script>
+</head>
+<body>
+	<div id="root">
+		<input type="text" v-model="message" />
+		<div>{{ message }}</div>
+		<div>{{ methodTime() }} methodTime</div>
+		<div>{{ computedTime }} computedTime</div>
+	</div>
+</body>
+</html>
+<script>
+    const app = new Vue({
+        el: "#root",
+        data: {
+            message: "123"
+        },
+        methods: {
+            methodTime: function() {
+                return new Date().getTime();
+            }
+        },
+        computed: {
+            computedTime: function() {
+                // 除非依赖的变量发生变化，才重新计算，否则使用上一次计算的缓存值
+                return new Date().getTime();
+            }
+        }
+    })
+</script>
