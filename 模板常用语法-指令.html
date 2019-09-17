@@ -14,8 +14,6 @@
 
             <h2 :class="title">此处绑定class</h2>
             <h2 :style="style">此处绑定style</h2>
-
-            <p v-if="seen">现在你看到我了</p>
         </div>
     </body>
 </html>
@@ -24,12 +22,11 @@
         el: "#root",
         data: {
             msg: "<h1 style=color:red>现在是进行vue基础的学习<h1>",
-            isButtonDisabled: false,
+            isButtonDisabled: true,
             title: 'title',
             style: {
                 'color': 'blue'
-            },
-            seen: true
+            }
         }
     });
 </script>

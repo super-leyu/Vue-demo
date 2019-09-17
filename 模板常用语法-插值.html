@@ -10,6 +10,7 @@
             <h2>{{ title }}</h2>
             <div>这是第{{ count + 1 }}次分享</div>
             <div>下次还有么？{{ count > 4 ? '没有': '有' }}</div>
+            <div>{{msg}}</div>
         </div>
     </body>
 </html>
@@ -18,7 +19,8 @@
         el: "#root",
         data: {
             title: '前端组基础培训（共4课）',
-            count: 1
+            count: 1,
+            msg: "<h1 style=color:red>现在是进行vue基础的学习<h1>"
         }
     });
 </script>

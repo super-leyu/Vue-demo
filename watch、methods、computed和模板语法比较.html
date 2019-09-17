@@ -26,16 +26,16 @@
             msg: "123",
             msgWatch: "",
             // deep深度监听
-            // msgObj: {
-            //     a: {
-            //         b: {
-            //             c: 1
-            //         }
-            //     }
-            // }
+            msgObj: {
+                a: {
+                    b: {
+                        c: 1
+                    }
+                }
+            }
         },
         created() {
-            this.msgWatch = this.reverse(this.msg);
+            // this.msgWatch = this.reverse(this.msg);
         },
         methods: {
             // 翻转
@@ -52,16 +52,22 @@
             }
         },
         watch: {
-            msg: function(newVal, oldVal) {
-                this.msgWatch = this.reverse(newVal);
-            }
-            // immediate立即调用
-            // msg: {
+            // msg: function(newVal, oldVal) {
+            //     this.msgWatch = this.reverse(newVal);
+            // },
+            // msgObj: {
             //     handler(newVal, oldVal) {
-            //         this.msgWatch = this.reverse(newVal);
+            //         console.log(newVal, 'msgObj')
             //     },
-            //     immediate: true
+            //     deep: true
             // }
+            // immediate立即调用
+            msg: {
+                handler(newVal, oldVal) {
+                    this.msgWatch = this.reverse(newVal);
+                },
+                immediate: true
+            }
         }
     });
 </script>
